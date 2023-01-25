@@ -1,6 +1,7 @@
 // Book Class: Represents a Book
 class Book {
-    constructor(title, author, isbn) {
+    constructor(title, author, isbn) 
+    {
       this.title = title;
       this.author = author;
       this.isbn = isbn;
@@ -9,15 +10,15 @@ class Book {
   
   // UI Class: Handle UI Tasks
   class UI {
-    static displayBooks() {
+    static displayBooks()
+     {
       const books = Store.getBooks();
-  
       books.forEach((book) => UI.addBookToList(book));
-    }
+     }
   
-    static addBookToList(book) {
+    static addBookToList(book) 
+     {
       const list = document.querySelector('#book-list');
-  
       const row = document.createElement('tr');
   
       row.innerHTML = `
@@ -36,10 +37,12 @@ class Book {
       }
     }
   
-    static showAlert(message, className) {
+    static showAlert(message, className) 
+    {
       const div = document.createElement('div');
       div.className = `alert alert-${className}`;
       div.appendChild(document.createTextNode(message));
+        
       const container = document.querySelector('.container');
       const form = document.querySelector('#book-form');
       container.insertBefore(div, form);
@@ -48,7 +51,8 @@ class Book {
       setTimeout(() => document.querySelector('.alert').remove(), 3000);
     }
   
-    static clearFields() {
+    static clearFields() 
+    {
       document.querySelector('#title').value = '';
       document.querySelector('#author').value = '';
       document.querySelector('#isbn').value = '';
@@ -59,7 +63,8 @@ class Book {
   class Store {
     static getBooks() {
       let books;
-      if(localStorage.getItem('books') === null) {
+      if(localStorage.getItem('books') === null)
+      {
         books = [];
       } else {
         books = JSON.parse(localStorage.getItem('books'));
@@ -68,13 +73,15 @@ class Book {
       return books;
     }
   
-    static addBook(book) {
+    static addBook(book) 
+     {
       const books = Store.getBooks();
       books.push(book);
       localStorage.setItem('books', JSON.stringify(books));
     }
   
-    static removeBook(isbn) {
+    static removeBook(isbn) 
+     {
       const books = Store.getBooks();
   
       books.forEach((book, index) => {
